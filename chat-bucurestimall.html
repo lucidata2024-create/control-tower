@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuciData — Teams Suite • Bucuresti Mall</title>
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/teamss.css">
+</head>
+<body>
+
+<header class="t-header">
+  <div class="t-brand">
+    <div class="t-logo">LuciData Tech</div>
+    <div class="t-store">
+      <div class="t-store-title" id="tStoreName">—</div>
+      <div class="t-store-sub" id="tStoreMeta">—</div>
+    </div>
+  </div>
+
+  <div class="t-header-actions">
+    <button class="t-iconbtn" id="btnQuickCall" title="Start call">📞</button>
+    <button class="t-iconbtn" id="btnQuickMeet" title="Start meeting">🎥</button>
+
+    <div class="t-notif">
+      <button class="t-iconbtn" id="btnNotifications" title="Notificări">🔔</button>
+      <span class="t-badge" id="notifBadge" style="display:none;">0</span>
+    </div>
+
+    <div class="t-user">
+      <div class="t-avatar">M</div>
+      <div class="t-user-meta">
+        <div class="t-user-name">Manager</div>
+        <div class="t-user-role">Store Director</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="t-shell">
+
+  <!-- LEFT RAIL (Teams / Apps) -->
+  <aside class="t-rail">
+    <button class="t-railbtn active" data-view="chatView">Chat</button>
+    <button class="t-railbtn" data-view="filesView">Files</button>
+    <button class="t-railbtn" data-view="calendarView">Calendar</button>
+    <button class="t-railbtn" data-view="tasksView">Tasks</button>
+    <button class="t-railbtn" data-view="callsView">Calls</button>
+  </aside>
+
+  <!-- TEAMS + CHANNELS -->
+  <aside class="t-sidebar">
+    <div class="t-sidebar-head">
+      <div class="t-sidebar-title">Echipe</div>
+      <button class="t-mini" id="btnNewTeam">+ Team</button>
+    </div>
+
+    <div class="t-teams" id="teamsList"></div>
+
+    <div class="t-sidebar-head" style="margin-top:12px;">
+      <div class="t-sidebar-title">Canale</div>
+      <button class="t-mini" id="btnNewChannel">+ Channel</button>
+    </div>
+    <div class="t-channels" id="channelsList"></div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <section class="t-main">
+
+    <!-- CHAT VIEW -->
+    <section class="t-view active" id="chatView">
+      <div class="t-view-head">
+        <div>
+          <div class="t-view-title" id="activeChannelTitle"># General</div>
+          <div class="t-view-sub" id="activeChannelSub">Mesaje persistente • Istoric salvat</div>
+        </div>
+        <div class="t-view-actions">
+          <button class="t-btn" id="btnPin">📌 Pin</button>
+          <button class="t-btn primary" id="btnAiExplain">AI Explain</button>
+        </div>
+      </div>
+
+      <div class="t-messages" id="messageList"></div>
+
+      <div class="t-composer">
+        <input id="msgInput" type="text" placeholder="Scrie un mesaj (Enter pentru trimite)..." />
+        <button class="t-btn primary" id="btnSend">Trimite</button>
+      </div>
+    </section>
+
+    <!-- FILES VIEW -->
+    <section class="t-view" id="filesView">
+      <div class="t-view-head">
+        <div>
+          <div class="t-view-title">Files</div>
+          <div class="t-view-sub">Stocare per canal • Versiuni (MVP)</div>
+        </div>
+        <div class="t-view-actions">
+          <label class="t-btn primary">
+            Încarcă
+            <input type="file" id="fileInput" style="display:none;">
+          </label>
+        </div>
+      </div>
+
+      <div class="t-panel">
+        <table class="t-table">
+          <thead>
+            <tr>
+              <th>Nume</th>
+              <th>Canal</th>
+              <th>Ultima versiune</th>
+              <th>Acțiuni</th>
+            </tr>
+          </thead>
+          <tbody id="filesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CALENDAR VIEW -->
+    <section class="t-view" id="calendarView">
+      <div class="t-view-head">
+        <div>
+          <div class="t-view-title">Calendar</div>
+          <div class="t-view-sub">Planificare întâlniri (MVP)</div>
+        </div>
+        <div class="t-view-actions">
+          <button class="t-btn primary" id="btnNewMeeting">+ Meeting</button>
+        </div>
+      </div>
+
+      <div class="t-grid2">
+        <div class="t-card">
+          <h3 class="t-card-title">Creează întâlnire</h3>
+          <div class="t-form">
+            <label>Titlu</label>
+            <input id="meetTitle" type="text" placeholder="Daily Ops / Inventory review" />
+            <label>Data & ora</label>
+            <input id="meetDate" type="datetime-local" />
+            <label>Participanți</label>
+            <input id="meetAtt" type="text" placeholder="manager@store, finance@hq" />
+            <button class="t-btn primary" id="btnSaveMeeting">Salvează</button>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <h3 class="t-card-title">Întâlniri programate</h3>
+          <div id="meetList" class="t-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASKS VIEW -->
+    <section class="t-view" id="tasksView">
+      <div class="t-view-head">
+        <div>
+          <div class="t-view-title">Tasks</div>
+          <div class="t-view-sub">Atribuire sarcini (MVP)</div>
+        </div>
+        <div class="t-view-actions">
+          <button class="t-btn primary" id="btnNewTask">+ Task</button>
+        </div>
+      </div>
+
+      <div class="t-grid2">
+        <div class="t-card">
+          <h3 class="t-card-title">Creează task</h3>
+          <div class="t-form">
+            <label>Titlu</label>
+            <input id="taskTitle" type="text" placeholder="Refill lactate / verificare expirări" />
+            <label>Asignează</label>
+            <input id="taskAssignee" type="text" placeholder="employee_12 / shift_lead" />
+            <label>Deadline</label>
+            <input id="taskDeadline" type="datetime-local" />
+            <button class="t-btn primary" id="btnSaveTask">Salvează</button>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <h3 class="t-card-title">Task-uri</h3>
+          <div id="taskList" class="t-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALLS VIEW -->
+    <section class="t-view" id="callsView">
+      <div class="t-view-head">
+        <div>
+          <div class="t-view-title">Calls & Meetings</div>
+          <div class="t-view-sub">VoIP / Video / Screen Share (demo UI)</div>
+        </div>
+        <div class="t-view-actions">
+          <button class="t-btn" id="btnStartAudio">Start Audio</button>
+          <button class="t-btn primary" id="btnStartVideo">Start Video</button>
+          <button class="t-btn" id="btnShareScreen">Share Screen</button>
+        </div>
+      </div>
+
+      <div class="t-call-stage">
+        <div class="t-call-box">
+          <div class="t-call-title">Meeting Stage (Demo)</div>
+          <div class="t-call-sub">În MVP: simulăm starea call-ului. În faza enterprise: WebRTC + recording.</div>
+          <div class="t-call-status" id="callStatus">Idle</div>
+        </div>
+      </div>
+    </section>
+
+  </section>
+</main>
+
+<!-- STORE CONTEXT -->
+<script>
+  window.STORE_CONTEXT = {
+    storeId: "MI-BUC-001",
+    storeName: "Bucuresti Mall",
+    county: "București",
+    city: "București"
+  };
+</script>
+
+<!-- BOOTSTRAP + MODULES -->
+<script src="../assets/js/notifications.js"></script>
+<script src="../assets/js/comm-engine.js"></script>
+<script src="../assets/js/files.js"></script>
+<script src="../assets/js/productivity.js"></script>
+<script src="../assets/js/calls.js"></script>
+<script src="../assets/js/teams-bootstrap.js"></script>
+
+</body>
+</html>
