@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>LuciData — Inventory | București Mall</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/inventory.css">
+
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LuciData Tech</div>
+</header>
+
+<main class="container">
+
+  <!-- 🔴 CONTEXT UNIC PENTRU MAGAZIN -->
+  <script>
+    window.STORE_CONTEXT = {
+      storeId: "MI-BUC-001",
+      storeName: "Mega Image București Mall",
+      city: "București",
+      ownership: "mega"
+    };
+  </script>
+
+  <!-- HEADER -->
+  <section class="section-header">
+    <h1>Inventory — Mega Image București Mall</h1>
+  </section>
+
+  <!-- KPI -->
+  <section class="kpi-grid">
+    <div class="kpi-card">
+      <h4>SKU-uri</h4>
+      <p id="invKpiSku">—</p>
+    </div>
+    <div class="kpi-card">
+      <h4>Raft gol</h4>
+      <p id="invKpiOos">—</p>
+    </div>
+    <div class="kpi-card">
+      <h4>Sub prag</h4>
+      <p id="invKpiLow">—</p>
+    </div>
+    <div class="kpi-card">
+      <h4>Expirări critice</h4>
+      <p id="invKpiExpiry">—</p>
+    </div>
+  </section>
+
+  <!-- INVENTORY TABLE -->
+  <section class="board-card" style="margin-top:20px;">
+    <h3>Stoc produse</h3>
+
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Raft</th>
+          <th>Depozit</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="inventoryTable"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<!-- DATA + LOGIC COMUNĂ -->
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/inventory-store.js"></script>
+
+</body>
+</html>
