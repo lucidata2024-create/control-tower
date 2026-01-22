@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuciData — Store Profile</title>
+
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/retail.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LuciData</div>
+  <nav>
+    <a href="../../index.html">Dashboard</a>
+    <a href="../../stores.html">Stores</a>
+    <a href="../../control-tower.html">Control Tower</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- STORE CONTEXT (IMPORTANT) -->
+  <script>
+    window.STORE_CONTEXT = { storeId: "MI-BUC-001" };
+  </script>
+
+  <section class="section-header">
+    <h1 id="spStoreName">—</h1>
+    <p id="spStoreMeta">—</p>
+    <div style="margin-top:8px;">
+      <span id="spOwnershipTag" class="tag">—</span>
+    </div>
+  </section>
+
+  <section class="kpi-grid" style="margin-top:14px;">
+    <div class="kpi-card"><h4>SKU-uri</h4><p id="spKpiSku">—</p></div>
+    <div class="kpi-card"><h4>Out-of-stock</h4><p id="spKpiOos">—</p></div>
+    <div class="kpi-card"><h4>Sub prag</h4><p id="spKpiLow">—</p></div>
+    <div class="kpi-card"><h4>Expirări critice</h4><p id="spKpiExpiry">—</p></div>
+    <div class="kpi-card"><h4>Task-uri întârziate</h4><p id="spKpiOverdue">—</p></div>
+  </section>
+
+<section style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+  <button
+  class="btn btn-primary"
+  onclick="window.location.href='../../inventory/bucurestimall.html'">
+  Inventory
+</button>
+
+<button
+    class="btn btn-secondary"
+    onclick="window.location.href='../../workforce/work.bucurestimall.html'">
+    Workforce
+  </button>
+
+<button
+  class="btn btn-secondary"
+  onclick="window.location.href='../../chat/chat.bucurestimall.html'">
+  Chat magazin
+</button>
+
+  <button id="spGoFinancials" class="btn btn-secondary">
+    Daily Financials
+  </button>
+
+  <button class="btn btn-secondary" onclick="history.back()">Înapoi</button>
+</section>
+
+  <section style="margin-top:18px;">
+    <h2>Dashboard operațional magazin</h2>
+    <p style="color:#666;max-width:820px;">
+    </p>
+  </section>
+
+  <section class="board-card" style="margin-top:20px;">
+  <h3>Inventory Snapshot</h3>
+
+  <table class="board-table">
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Raft</th>
+        <th>Depozit</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="spInventoryTable"></tbody>
+  </table>
+</section>
+
+<section class="board-card" style="margin-top:20px;">
+  <h3>Refill List (AI)</h3>
+  <ul id="spRefillList" class="board-rec-list"></ul>
+</section>
+
+<section class="board-card" style="margin-top:20px;">
+  <h3>Produse aproape de expirare</h3>
+
+  <table class="board-table">
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Cantitate</th>
+        <th>Expiră</th>
+        <th>Recomandare AI</th>
+      </tr>
+    </thead>
+    <tbody id="spExpiryTable"></tbody>
+  </table>
+</section>
+
+<section class="board-card" style="margin-top:20px;">
+  <h3>Evenimente POS</h3>
+
+  <table class="board-table">
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>SKU</th>
+        <th>Cantitate</th>
+        <th>Tip</th>
+      </tr>
+    </thead>
+    <tbody id="spPosEvents"></tbody>
+  </table>
+</section>
+
+<section class="board-card" style="margin-top:20px;">
+  <h3>Audit Trail</h3>
+
+  <table class="board-table">
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Acțiune</th>
+        <th>Actor</th>
+        <th>Detalii</th>
+      </tr>
+    </thead>
+    <tbody id="spAuditTable"></tbody>
+  </table>
+</section>
+
+</main>
+
+<!-- DATA -->
+<script src="../../assets/js/data.js"></script>
+<script src="../../assets/js/stores-data.js"></script>
+
+<!-- Retail (dacă ai fișierele) -->
+<script src="../../assets/js/store-profile.js"></script>
+
+</body>
+</html>
