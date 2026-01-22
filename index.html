@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuciData — Retail Operations Control Tower</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="control-tower.css">
+</head>
+
+<body>
+
+  <!-- HEADER (reutilizat) -->
+  <header>
+    <div class="logo">LuciData</div>
+
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="board.html">Board View</a>
+      <a href="stores.html">Stores</a>
+      <a href="control-tower.html" class="active-link">Control Tower</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="section-header">
+      <h1>Retail Operations Control Tower</h1>
+      <p>
+        Vizibilitate operațională în timp real asupra magazinelor, stocurilor și riscurilor.
+      </p>
+    </section>
+
+    <!-- GLOBAL OVERVIEW -->
+    <section class="overview-grid">
+      <div class="overview-card">
+        <h4>Magazine active</h4>
+        <p id="ctTotalStores">—</p>
+      </div>
+
+      <div class="overview-card warning">
+        <h4>Magazine în atenție</h4>
+        <p id="ctWarningStores">—</p>
+      </div>
+
+      <div class="overview-card critical">
+        <h4>Magazine critice</h4>
+        <p id="ctCriticalStores">—</p>
+      </div>
+
+      <div class="overview-card">
+        <h4>Alerte active</h4>
+        <p id="ctActiveAlerts">—</p>
+      </div>
+    </section>
+
+    <!-- STORES GRID -->
+    <section class="section">
+      <h2>Status magazine</h2>
+
+      <div id="controlTowerStores" class="stores-grid">
+        <!-- Carduri magazine generate din JS -->
+      </div>
+    </section>
+
+    <!-- TOP RISK STORES -->
+    <section class="section">
+      <h2>Top magazine cu risc operațional</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Magazin</th>
+            <th>Județ</th>
+            <th>Status</th>
+            <th>Risk Score</th>
+            <th>Acțiuni</th>
+          </tr>
+        </thead>
+        <tbody id="ctTopRiskStores"></tbody>
+      </table>
+    </section>
+
+    <section class="ct-section">
+  <div class="ct-section-header">
+    <h2>Live Alerts</h2>
+    <span class="ct-note">Evenimente operaționale care necesită acțiune imediată</span>
+  </div>
+
+  <div id="liveAlerts" class="alerts-grid"></div>
+</section>
+
+    <section class="ct-section">
+  <div class="ct-section-header">
+    <h2>Regional Operational Map</h2>
+    <span class="ct-note">Status operațional pe județe</span>
+  </div>
+
+  <div id="regionalMap" class="regional-map-grid"></div>
+</section>
+
+  </main>
+
+  <!-- DATA -->
+  <script src="storesdata.js"></script>
+
+  <!-- CONTROL TOWER LOGIC -->
+  <script src="controltower.js"></script>
+
+</body>
+</html>
