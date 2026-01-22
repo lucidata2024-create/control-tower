@@ -1,0 +1,289 @@
+/* =========================================================
+   LuciData Inventory – Original Theme (Enterprise)
+   File: assets/css/inventory.css
+   ========================================================= */
+
+:root{
+  --inv-bg: #f4f6fb;
+  --inv-surface: #ffffff;
+  --inv-surface-2: #f7f9fc;
+  --inv-border: rgba(0,0,0,0.08);
+
+  --inv-text: #1f2a44;
+  --inv-muted: #6b7280;
+
+  /* BRAND COLORS (LuciData) */
+  --inv-accent: #2d89ff;
+  --inv-accent-soft: rgba(45,137,255,0.12);
+  --inv-accent-strong: #1e5fd6;
+
+  --inv-ok: #16a34a;
+  --inv-warn: #f59e0b;
+  --inv-crit: #dc2626;
+
+  --inv-radius: 14px;
+  --inv-shadow: 0 10px 30px rgba(31,42,68,0.10);
+  --inv-shadow-soft: 0 6px 18px rgba(31,42,68,0.08);
+
+  --inv-font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* =========================================================
+   BASE PAGE
+========================================================= */
+body{
+  font-family: var(--inv-font);
+  background: linear-gradient(180deg, #f4f6fb, #eef2f8);
+  color: var(--inv-text);
+}
+
+.container{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px 18px 40px;
+}
+
+/* =========================================================
+   HEADER (inventory only)
+========================================================= */
+header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid var(--inv-border);
+}
+
+header .logo{
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: var(--inv-accent);
+}
+
+header nav a{
+  color: var(--inv-muted);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: background .18s ease, color .18s ease;
+}
+
+header nav a:hover{
+  background: var(--inv-accent-soft);
+  color: var(--inv-accent);
+}
+
+header nav a.active-link{
+  background: var(--inv-accent-soft);
+  color: var(--inv-accent-strong);
+  border: 1px solid rgba(45,137,255,0.25);
+}
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+.section-header{
+  padding: 18px 18px;
+  border-radius: var(--inv-radius);
+  background: linear-gradient(
+    135deg,
+    rgba(45,137,255,0.10),
+    rgba(255,255,255,0.85)
+  );
+  border: 1px solid rgba(45,137,255,0.18);
+  box-shadow: var(--inv-shadow-soft);
+}
+
+.section-header h1{
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.section-header p{
+  margin: 6px 0 0 0;
+  color: var(--inv-muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   KPI GRID
+========================================================= */
+.kpi-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.kpi-card{
+  background: var(--inv-surface);
+  border: 1px solid var(--inv-border);
+  border-radius: var(--inv-radius);
+  padding: 14px 14px;
+  box-shadow: var(--inv-shadow-soft);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.kpi-card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--inv-shadow);
+}
+
+.kpi-card h4{
+  margin: 0 0 8px 0;
+  font-size: 0.78rem;
+  color: var(--inv-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.kpi-card p{
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--inv-accent-strong);
+}
+
+/* =========================================================
+   CARD / PANEL
+========================================================= */
+.board-card{
+  margin-top: 18px;
+  padding: 16px 16px;
+  border-radius: var(--inv-radius);
+  background: var(--inv-surface);
+  border: 1px solid var(--inv-border);
+  box-shadow: var(--inv-shadow-soft);
+}
+
+.board-card h3{
+  margin: 0 0 14px 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+.board-table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.board-table thead th{
+  text-align: left;
+  font-size: 0.78rem;
+  color: var(--inv-muted);
+  font-weight: 800;
+  padding: 12px;
+  background: #f1f5fb;
+  border-bottom: 1px solid var(--inv-border);
+}
+
+.board-table tbody td{
+  padding: 12px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--inv-border);
+}
+
+.board-table tbody tr{
+  background: #ffffff;
+  transition: background .16s ease;
+}
+
+.board-table tbody tr:hover{
+  background: #f7faff;
+}
+
+/* =========================================================
+   STATUS PILLS
+========================================================= */
+.inv-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  border: 1px solid var(--inv-border);
+  background: #f9fafb;
+}
+
+.inv-pill::before{
+  content:"";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.inv-pill.ok{
+  color: var(--inv-ok);
+  background: rgba(22,163,74,0.12);
+}
+.inv-pill.ok::before{ background: var(--inv-ok); }
+
+.inv-pill.warning{
+  color: var(--inv-warn);
+  background: rgba(245,158,11,0.14);
+}
+.inv-pill.warning::before{ background: var(--inv-warn); }
+
+.inv-pill.critical{
+  color: var(--inv-crit);
+  background: rgba(220,38,38,0.14);
+}
+.inv-pill.critical::before{ background: var(--inv-crit); }
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.btn-primary{
+  color: #ffffff;
+  background: linear-gradient(135deg, #2d89ff, #1e5fd6);
+  box-shadow: 0 10px 22px rgba(45,137,255,0.25);
+}
+
+.btn-primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(45,137,255,0.32);
+}
+
+.btn-secondary{
+  background: #ffffff;
+  color: var(--inv-accent);
+  border: 1px solid rgba(45,137,255,0.25);
+}
+
+
+.btn-secondary:hover{
+  transform: translateY(-1px);
+  border-color: rgba(227,6,19,0.25);
+}
+
+/* ===== Responsive small tweaks ===== */
+@media (max-width: 520px){
+  .section-header{ padding: 14px; }
+  .board-card{ padding: 14px; }
+  .board-table thead th,
+  .board-table tbody td{ padding: 10px; }
+}
