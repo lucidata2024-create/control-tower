@@ -6,7 +6,7 @@
 ====================================================== */
 document.addEventListener("DOMContentLoaded", () => {
   if (!window.LuciData?.retail?.stores) {
-    console.error("Control Tower: stores-data.js nu este disponibil.");
+    console.error("Control Tower: storesdata.js nu este disponibil.");
     return;
   }
 
@@ -287,5 +287,5 @@ document.addEventListener("click", e => {
 
   // IMPORTANT: ajustează calea în funcție de unde e control-tower.html
   // Dacă control-tower.html e în root, aceasta e corectă:
-  window.location.href = `retail/stores/${store.profilePage}`;
+  window.location.href = `${store.profilePage}`;
 });
